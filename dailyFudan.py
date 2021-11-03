@@ -239,19 +239,24 @@ def get_account():
     """
     获取账号信息
     """
-    uid, psw, *IYUU_TOKEN = sys_argv[1].strip().split(' ')
-    return uid, psw, IYUU_TOKEN
+    # uid, psw, *IYUU_TOKEN = sys_argv[1].strip().split(' ')
+    uid, psw, IYUU_TOKEN = sys_argv[1].strip().split(' ')
+    return uid, psw
 
 gl_info = "快去手动填写！"
 if __name__ == '__main__':
-    uid, psw, IYUU_TOKE = get_account()
+    uid, psw, IYUU_TOKEN = get_account()
+    # uid = '20212020027'
+    # psw = 'qaz12345[;,'
+    # IYUU_TOKE = 'IYUU8158T24dcfa84482d43802ed11c1be662ebbde4b0f408'
+
     if IYUU_TOKE: #有token则通知，无token不通知
-        if len(IYUU_TOKE) != 3:
-            logging.error("请正确配置微信通知功能和验证码打码功能～\n")
-            sys_exit(1)
-        uname = IYUU_TOKE[1]
-        pwd = IYUU_TOKE[2]
-        IYUU_TOKE = IYUU_TOKE[0]
+        # if len(IYUU_TOKE) != 3:
+        #     logging.error("请正确配置微信通知功能和验证码打码功能～\n")
+        #     sys_exit(1)
+        # uname = IYUU_TOKE[1]
+        # pwd = IYUU_TOKE[2]
+        # IYUU_TOKE = IYUU_TOKE[0]
         if IYUU_TOKE.startswith('IYUU'):
             iy_info = iyuu(IYUU_TOKE)
         else:

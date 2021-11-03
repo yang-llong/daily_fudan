@@ -5,6 +5,9 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
+import muggle_ocr
+sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.Captcha)
+
 def base64_api(uname, pwd, img, typeid):
     base64_data = base64.b64encode(img)
     b64 = base64_data.decode()
@@ -53,8 +56,10 @@ class DailyFDCaptcha:
         self.pwd = pwd
         self.info = info_callback
     def __call__(self):
-        img = getCaptchaData(self.zlapp)
-        result = base64_api(self.uname,self.pwd,img,self.typeid)
+        imgByte = getCaptchaData(self.zlapp)
+        # result = base64_api(self.uname,self.pwd,img,self.typeid)
+        Image.open(BytesIO(imgByte)).save('captcha.png')
+        result = sdk.predict(image_bytes=imgByte)
         print(result)
         if result['success']:
             self.id = result["data"]["id"]
