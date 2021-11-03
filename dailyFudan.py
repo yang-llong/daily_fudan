@@ -239,13 +239,15 @@ def get_account():
     """
     获取账号信息
     """
-    # uid, psw, *IYUU_TOKEN = sys_argv[1].strip().split(' ')
     uid, psw, IYUU_TOKEN = sys_argv[1].strip().split(' ')
-    return uid, psw
+    # uid = sys_argv[1]
+    # psw = sys_argv[2]
+    # IYUU_TOKEN = sys_argv[3]
+    return uid, psw, IYUU_TOKEN
 
 gl_info = "快去手动填写！"
 if __name__ == '__main__':
-    uid, psw, IYUU_TOKEN = get_account()
+    uid, psw, IYUU_TOKE = get_account()
     # uid = '20212020027'
     # psw = 'qaz12345[;,'
     # IYUU_TOKE = 'IYUU8158T24dcfa84482d43802ed11c1be662ebbde4b0f408'
