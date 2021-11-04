@@ -51,6 +51,7 @@
 - secret名字必须为`FUDAN`！
 - secret名字必须为`FUDAN`！
 - secret名字必须为`FUDAN`！
+- `学号`+`(空格)`+`密码`
 - 如果要开启成功填写的通知，在 http://iyuu.cn/ 申请token 然后在密码后面+ `(空格)`+`token`
 - `学号`+`(空格)`+`密码`+ `(空格)`+`token`
 
