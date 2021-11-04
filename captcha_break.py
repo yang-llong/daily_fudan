@@ -4,6 +4,8 @@ import sys
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+from PIL import Image
+from io import BytesIO
 
 import muggle_ocr
 sdk = muggle_ocr.SDK(model_type=muggle_ocr.ModelType.Captcha)
@@ -48,12 +50,12 @@ class DailyFDCaptcha:
     info = lambda x: x
     id = 0
     def __init__(self,
-                 uname, pwd,
+                #  uname, pwd,
                  zlapp,
                  info_callback):
         self.zlapp = zlapp
-        self.uname = uname
-        self.pwd = pwd
+        # self.uname = uname
+        # self.pwd = pwd
         self.info = info_callback
     def __call__(self):
         imgByte = getCaptchaData(self.zlapp)
@@ -61,11 +63,13 @@ class DailyFDCaptcha:
         Image.open(BytesIO(imgByte)).save('captcha.png')
         result = sdk.predict(image_bytes=imgByte)
         print(result)
-        if result['success']:
-            self.id = result["data"]["id"]
-            return result["data"]["result"]
-        else:
-            self.info(result["message"])
+        # if result['success']:
+        #     self.id = result["data"]["id"]
+        #     return result["data"]["result"]
+        # else:
+        #     self.info(result["message"])
+        self.id = 0
+        return result
     def reportError(self):
         if self.id != 0:
             self.info(reportError(self.id))
