@@ -244,7 +244,7 @@ def get_account():
         uid, psw, IYUU_TOKEN = sys_argv[1].strip().split(' ')
     else:
         uid, psw = sys_argv[1].strip().split(' ')
-        IYUU_TOKEN = ''
+        IYUU_TOKEN = 'a'
     # uid = sys_argv[1]
     # psw = sys_argv[2]
     # IYUU_TOKEN = sys_argv[3]
