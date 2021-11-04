@@ -1,4 +1,4 @@
 lxml
 requests
-PIL
+Pillow
 io
