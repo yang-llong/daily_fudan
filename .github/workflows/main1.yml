@@ -26,12 +26,7 @@ jobs:
       - name: Auto merge
         if: ${{ env.ALLOW_MERGE != 'false' }}
         run: |
-          git config --global user.name  github-actions
-          git config --global user.email github-actions@github.com
-          git config --global pull.rebase true
-          git remote add upstream https://github.com/xiongwu12345/daily_fudan.git
-          git pull upstream master --allow-unrelated-histories
-          git push origin master --force
+          
       - name: Set up python
         uses: actions/setup-python@v2
         with:
